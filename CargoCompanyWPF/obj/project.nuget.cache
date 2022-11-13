@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "dgSpecHash": "VUo4Ngp/b2LpcZert+OByHJFEAUB2ZOSWG7urQWEh+wllqZA4nFwwu+wdvqozmUMsmgLeFw1Wm6rRvuhqte3Tg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ADMIN\\source\\repos\\CargoCompanyWPF\\CargoCompanyWPF\\CargoCompanyWPF.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ADMIN\\.nuget\\packages\\controlzex\\4.3.0\\controlzex.4.3.0.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\mahapps.metro\\2.0.0\\mahapps.metro.2.0.0.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\materialdesigncolors\\2.0.9\\materialdesigncolors.2.0.9.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\materialdesignthemes\\4.6.1\\materialdesignthemes.4.6.1.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\materialdesignthemes.mahapps\\0.2.5\\materialdesignthemes.mahapps.0.2.5.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.netcore.platforms\\1.0.1\\microsoft.netcore.platforms.1.0.1.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.netcore.targets\\1.0.1\\microsoft.netcore.targets.1.0.1.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.19\\microsoft.xaml.behaviors.wpf.1.1.19.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\mvvmlightlibsstd10\\5.4.1.1\\mvvmlightlibsstd10.5.4.1.1.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\simpleinjector\\5.4.1\\simpleinjector.5.4.1.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\system.componentmodel\\4.0.1\\system.componentmodel.4.0.1.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\system.runtime\\4.1.0\\system.runtime.4.1.0.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512"
+  ],
+  "logs": []
+}

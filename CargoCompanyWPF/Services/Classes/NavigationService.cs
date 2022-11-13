@@ -1,0 +1,28 @@
+﻿using CargoCompanyWPF.Message;
+using CargoCompanyWPF.Services.Interfaces;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+
+namespace CargoCompanyWPF.Services.Classes
+{
+    public class NavigationService : INavigationService
+    {
+        private readonly IMessenger _messenger;
+        public NavigationService(IMessenger messenger)
+        {
+            _messenger = messenger;
+        }
+
+        public void NavigateTo<T>(ParameterMessage? message) where T : ViewModelBase
+        {
+            _messenger.Send(message);
+            _messenger.Send(new NavigationMessage() { ViewModelType = typeof(T) });
+        }
+    }
+}

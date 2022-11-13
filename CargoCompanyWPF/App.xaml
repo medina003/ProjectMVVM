@@ -1,0 +1,30 @@
+﻿<Application x:Class="CargoCompanyWPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:CargoCompanyWPF"
+             xmlns:viewModel="clr-namespace:CargoCompanyWPF.ViewModel"
+             xmlns:view="clr-namespace:CargoCompanyWPF.View"
+             StartupUri="../View/MainView.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type viewModel:MainViewModel}">
+                <view:MainView></view:MainView>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:LoginViewModel}">
+                <view:LoginView></view:LoginView>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:RegistrationViewModel}">
+                <view:RegistrationView></view:RegistrationView>
+            </DataTemplate>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
