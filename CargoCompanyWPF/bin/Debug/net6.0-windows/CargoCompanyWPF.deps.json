@@ -11,6 +11,7 @@
           "MaterialDesignColors": "2.0.9",
           "MaterialDesignThemes.MahApps": "0.2.5",
           "MvvmLightLibsStd10": "5.4.1.1",
+          "PropertyChanged.Fody": "4.1.0",
           "SimpleInjector": "5.4.1"
         },
         "runtime": {
@@ -29,6 +30,7 @@
           }
         }
       },
+      "Fody/6.6.4": {},
       "MahApps.Metro/2.0.0": {
         "dependencies": {
           "ControlzEx": "4.3.0"
@@ -90,6 +92,11 @@
           }
         }
       },
+      "PropertyChanged.Fody/4.1.0": {
+        "dependencies": {
+          "Fody": "6.6.4"
+        }
+      },
       "SimpleInjector/5.4.1": {
         "dependencies": {
           "System.ComponentModel": "4.0.1"
@@ -127,6 +134,13 @@
       "sha512": "sha512-I7PKmQNIMO9+s4s50WXOApotnyEKL9G8vvYrZY7CLe7nufXwRSv+vWPrd4BYwZDQiWHbBwnXsC8zUPgPnEWr6g==",
       "path": "controlzex/4.3.0",
       "hashPath": "controlzex.4.3.0.nupkg.sha512"
+    },
+    "Fody/6.6.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vLZS+oa+ndUHYPlx/8n9bBTT3dHkCF0riml4paKq4D663+cZd47x1uagQo32D/gKFZ/sfmV1oqKaLmH0elxq4A==",
+      "path": "fody/6.6.4",
+      "hashPath": "fody.6.6.4.nupkg.sha512"
     },
     "MahApps.Metro/2.0.0": {
       "type": "package",
@@ -183,6 +197,13 @@
       "sha512": "sha512-zU9KXgq8dfnzxxOvvAVtasbhaQGoDlTr8Pw2AjZ1NB905GQljrxqkgh3jo5/47Vux5duw3/faUgcZjdfomGvFw==",
       "path": "mvvmlightlibsstd10/5.4.1.1",
       "hashPath": "mvvmlightlibsstd10.5.4.1.1.nupkg.sha512"
+    },
+    "PropertyChanged.Fody/4.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6v+f9cI8YjnZH2WBHuOqWEAo8DFFNGFIdU8xD3AsL6fhV6Y8oAmVWd7XKk49t8DpeUBwhR/X+97+6Epvek0Y3A==",
+      "path": "propertychanged.fody/4.1.0",
+      "hashPath": "propertychanged.fody.4.1.0.nupkg.sha512"
     },
     "SimpleInjector/5.4.1": {
       "type": "package",

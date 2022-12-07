@@ -7,24 +7,60 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="View\AdminView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\DeclareView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\IncreasingBalanceView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\LoginView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\MainView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\PlaceOrderView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\PrivateInfoView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\RegistrationView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\UserDashboardView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="View\AdminView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\DeclareView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\IncreasingBalanceView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\LoginView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\MainView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\PlaceOrderView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\PrivateInfoView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\RegistrationView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\UserDashboardView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

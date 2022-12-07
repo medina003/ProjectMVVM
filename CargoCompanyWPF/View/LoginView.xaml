@@ -19,14 +19,14 @@
               Height="700" Width="800">
 
     <Grid>
-        <Grid>
-            <TextBlock Text="" FontSize="20" Margin="259,349,249,308" IsEnabled="False" />
-            <TextBlock Text="" FontSize="20" Margin="267,324,241,347" IsEnabled="False"/>
+        
+            <TextBlock Text="{Binding Error.Email_error}" FontSize="20" Margin="245,218,263,464" IsEnabled="True" />
+            <TextBlock Text="{Binding Error.Password_error}" FontSize="20" Margin="250,330,258,352" IsEnabled="True" />
             <TextBlock Text="Login" IsEnabled="False" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"  FontSize="40" Margin="345,48,0,0"/>
-            <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Text="email" Margin="80,150,0,0" FontSize="35" Width="388"/>
-            <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Text="password" Margin="72,256,0,0" FontSize="35" Width="388"/>
-            <Button x:Name="login" DockPanel.Dock="Bottom" Content="Login" Margin="279,525,313,143" FontSize="20"  />
-            <Button x:Name="notauser" Command="{Binding Not_user}"  HorizontalAlignment="Left"  Content="Not a user?" Margin="301,363,0,305"  />
-        </Grid>
+            <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding User.Email}" Margin="70,150,0,0" FontSize="35" Width="388"/>
+            <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding User.Password}" Margin="72,256,0,0" FontSize="35" Width="388"/>
+            <Button x:Name="login" Command="{Binding LoginCommand}" DockPanel.Dock="Bottom" Content="Login" Margin="279,525,313,143" FontSize="20"  />
+            <Button x:Name="notauser" Command="{Binding Not_user}"  HorizontalAlignment="Left"  Content="Not a user?" Margin="333,609,0,59"  />
+        
     </Grid>
 </UserControl>

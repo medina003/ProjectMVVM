@@ -27,7 +27,7 @@ namespace CargoCompanyWPF
 
             MainStartup();
 
-            base.OnStartup(e);
+            base.OnStartup(e); 
         }
         private void Register()
         {
@@ -35,10 +35,18 @@ namespace CargoCompanyWPF
 
             Container.RegisterSingleton<IMessenger, Messenger>();
             Container.RegisterSingleton<INavigationService, NavigationService>();
+            Container.RegisterSingleton<AdminViewModel>();
 
             Container.RegisterSingleton<MainViewModel>();
             Container.RegisterSingleton<LoginViewModel>();
             Container.RegisterSingleton<RegistrationViewModel>();
+            Container.RegisterSingleton<UserdashboardViewModel>();
+            Container.RegisterSingleton<PrivateInfoViewModel>();
+            Container.RegisterSingleton<PlaceOrderViewModel>();
+            Container.RegisterSingleton<DeclareViewModel>();
+            Container.RegisterSingleton<IncreasingBalanceViewModel>();
+
+
 
             Container.Verify();
         }

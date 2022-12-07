@@ -18,7 +18,24 @@
             <DataTemplate DataType="{x:Type viewModel:RegistrationViewModel}">
                 <view:RegistrationView></view:RegistrationView>
             </DataTemplate>
-
+            <DataTemplate DataType="{x:Type viewModel:UserdashboardViewModel}">
+                <view:UserDashboardView></view:UserDashboardView>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:PrivateInfoViewModel}">
+                <view:PrivateInfoView></view:PrivateInfoView>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:PlaceOrderViewModel}">
+                <view:PlaceOrderView></view:PlaceOrderView>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:DeclareViewModel}">
+                <view:DeclareView></view:DeclareView>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:IncreasingBalanceViewModel}">
+                <view:IncreasingBalanceView></view:IncreasingBalanceView>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:AdminViewModel}">
+                <view:AdminView></view:AdminView>
+            </DataTemplate>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />

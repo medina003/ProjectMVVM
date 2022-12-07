@@ -1,0 +1,203 @@
+﻿<UserControl x:Class="CargoCompanyWPF.View.UserDashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CargoCompanyWPF.View"
+             xmlns:viewModel="clr-namespace:CargoCompanyWPF.ViewModel"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DataContext="{d:DesignInstance viewModel:UserdashboardViewModel}"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+            TextElement.FontWeight="Regular"
+            TextElement.FontSize="14"
+            TextOptions.TextFormattingMode="Ideal"
+            TextOptions.TextRenderingMode="Auto"
+            Background="{DynamicResource MaterialDesignPaper}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+             mc:Ignorable="d" 
+             Name="MyHomeView"
+              Height="700" Width="840">
+    <UserControl.Resources>
+        <Style x:Key="ListViewStyle" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+        </Style>
+    </UserControl.Resources>
+    <Grid Margin="1,0,-1,0">
+        <!--<Grid.ColumnDefinitions>
+            <ColumnDefinition Width="153*"/>
+            <ColumnDefinition Width="47*"/>
+        </Grid.ColumnDefinitions>-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <!--The header of the application that remains unchanged while navigating-->
+        <Grid Grid.Row="0" Background="
+#320b86" >
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="17*"/>
+                <ColumnDefinition Width="143*"/>
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon Kind="Account"  Width="30" Height="30" Margin="3,15,0,0"/>
+            <TextBlock Text="{Binding Name}" Margin="0,0,42,0"></TextBlock>
+            <Button Command ="{Binding PrivateInfoCommand}" x:Name="UserSettings" Grid.Row="0" Content="Private info" Margin="52,16,633,22" Grid.ColumnSpan="2"  />
+            <Button Command="{Binding PlaceOrderCommand}" x:Name="PlaceOrder" Grid.Row="0" Content="Place Order" Margin="355,18,245,20" Grid.Column="1" />
+            <Button Command="{Binding DeclareCommand}" x:Name="Declare" Grid.Row="0" Content="Declare" Margin="519,18,81,20" Grid.Column="1" />
+            <!--<Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="4*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="0.75*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>-->
+            <StackPanel Margin="20 10 0 0"  Grid.Row="0" Grid.Column="0" Orientation="Vertical" Grid.ColumnSpan="2">
+
+
+            </StackPanel>
+
+
+            <Button Command="{Binding LogOutCommand}" Grid.Column="1"  Width="50" Height="50" Margin="671,10,30,10"  BorderBrush="
+Transparent"  BorderThickness="100">
+                <materialDesign:PackIcon
+                    Width="20"
+                    Height="20"
+                    Foreground="
+white"
+                    Kind="Logout" />
+            </Button>
+
+        </Grid>
+
+        <Grid Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+        </Grid>
+        <Grid Grid.Row="1" >
+
+            <Grid Grid.Column="0" Background="Orange" Margin="32,49,650,0" Height="61" VerticalAlignment="Top" >
+                <TextBlock Background="Orange" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"  Text="{Binding Balance.Balance_for_purchase}" TextWrapping="Wrap" TextAlignment="Center"/>
+            </Grid>
+            <Grid Background="Orange" Margin="237,50,446,0" Height="62" VerticalAlignment="Top">
+                <TextBlock Background="Orange" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="{Binding Balance.Balance_for_delivery}" TextWrapping="Wrap" TextAlignment="Center"/>
+            </Grid>
+            <Grid Background="Orange" Margin="444,49,239,0" Height="62" VerticalAlignment="Top">
+                <TextBlock Background="Orange" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="{Binding User.Last30Days}"/>
+            </Grid>
+
+            <Button Command ="{Binding IncreasingBalanceCommand}" Content="Increase the balance" Margin="652,64,16,54"/>
+
+        </Grid>
+        <!--The tab controls that will hold the content of the different pages -->
+        <TabControl Grid.Row="2" VerticalContentAlignment="Top"
+                        Style="{StaticResource MaterialDesignNavigatilRailTabControl}"
+                        materialDesign:ColorZoneAssist.Mode="Standard" Margin="0,0,1,0"  >
+            <TabItem   Width="140" Height="165" x:Name="AddPlayerTab">
+                <TabItem.Header>
+                    <StackPanel  Background=" 
+WhiteSmoke"  Height="165" Width="140" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                        <materialDesign:PackIcon Kind="Marketplace" Width="30" Height="30" Margin="0 10 0 0" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+                        <TextBlock Text="Orders" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Grid>
+                        <ComboBox SelectedValue="{Binding SelectedValue}"  Margin="458,17,31,0" VerticalAlignment="Top" ItemsSource="{Binding Strings}" >
+
+                        </ComboBox>
+                        <ScrollViewer Margin="0,76,30,20"  VerticalScrollBarVisibility="Auto">
+
+                            <StackPanel>
+                                <ListView  ItemsSource="{Binding PostsView}" >
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}"  Header="Link"  Width="225" DisplayMemberBinding="{Binding Link}"  />
+                                            <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Header="Amount" Width="225" DisplayMemberBinding="{Binding Amount}" />
+                                            <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Header="Date" Width="225" DisplayMemberBinding="{Binding dateTime}" />
+
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem  Width="140" Height="165">
+                <TabItem.Header>
+                    <StackPanel Background="
+WhiteSmoke"  Height="165" Width="140">
+                        <materialDesign:PackIcon Kind="PackageVariantClosed" Width="30" Height="30" Margin="0 10 0 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Packages"  HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Grid>
+                        <ComboBox SelectedValue="{Binding SelectedValue2}"  Margin="458,17,31,0" VerticalAlignment="Top" ItemsSource="{Binding Strings2}" >
+
+                        </ComboBox>
+                        <ScrollViewer Margin="0,76,30,20"  VerticalScrollBarVisibility="Auto">
+
+                            <StackPanel>
+                                <ListView  ItemsSource="{Binding PostsView2}" >
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}"  Header="Link"  Width="225" DisplayMemberBinding="{Binding Link}"  />
+                                            <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Header="Amount" Width="225" DisplayMemberBinding="{Binding Amount}" />
+                                            <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Header="Date" Width="225" DisplayMemberBinding="{Binding dateTime}" />
+
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem  Width="140" Height="165" x:Name="DashboardTab">
+                <TabItem.Header>
+                    <StackPanel Background="
+WhiteSmoke" Height="165" Width="140">
+                        <materialDesign:PackIcon Kind="AddressMarker"  Width="30" Height="30" Margin="0 10 0 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Addresses"  HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Text="Ülke:  Turkey" Margin="27,50,0,0"/>
+                        <TextBlock Grid.Column="1"  HorizontalAlignment="Left" VerticalAlignment="Center" Text="Adres satır 1:  Hürriyet mah. Hürriyet caddesi sk. 19a" Margin="10,0,0,0"/>
+                        <TextBlock Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Top" Text="Adress Satır 2:  Lojistik Limited" Margin="27,53,0,0"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Left" VerticalAlignment="Center" Text="İl:  İstanbul" Margin="10,0,0,0"/>
+                        <TextBlock Grid.Row="2" Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Top" Text="İlçe:  Bahçelievler" Margin="28,53,0,0"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1"  HorizontalAlignment="Left" VerticalAlignment="Center" Text="Semt:  Hürriyet Mah" Margin="10,0,0,0"/>
+                        <TextBlock Grid.Row="3" Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Center" Text="ZIP/Postal:  34191" Margin="27,0,0,0"/>
+                        <TextBlock Grid.Row="3" Grid.Column="1"  HorizontalAlignment="Left" VerticalAlignment="Center" Text="TC kimlik:  99416842946" Margin="10,0,0,0"/>
+
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+
+</UserControl>

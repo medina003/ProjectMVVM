@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\ADMIN\source\repos\CargoCompanyWPF\CargoCompanyWPF\obj\Debug\net6.0-windows\
+C:\Users\ADMIN\source\repos\CargoCompanyWPF2\CargoCompanyWPF\obj\Debug\net6.0-windows\
 CargoCompanyWPF
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\ADMIN\source\repos\CargoCompanyWPF\CargoCompanyWPF\App.xaml
-3-516210669
+C:\Users\ADMIN\source\repos\CargoCompanyWPF2\CargoCompanyWPF\App.xaml
+91585730352
 
-141901668771
-202-572298700
-View\LoginView.xaml;View\MainView.xaml;View\RegistrationView.xaml;
+341792541439
+203994630120
+View\AdminView.xaml;View\DeclareView.xaml;View\IncreasingBalanceView.xaml;View\LoginView.xaml;View\MainView.xaml;View\PlaceOrderView.xaml;View\PrivateInfoView.xaml;View\RegistrationView.xaml;View\UserDashboardView.xaml;
 
 False
 
