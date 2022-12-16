@@ -52,7 +52,7 @@ namespace CargoCompanyWPF.ViewModel
             get => new(() =>
             {
                 
-                    var errors = IsValid_check.IsValidForDeclareVM(Order);
+                    var errors = IsValidCheckService.IsValidForDeclareVM(Order);
 
                     Error = errors!.Item1!;
 

@@ -28,7 +28,7 @@ namespace CargoCompanyWPF.ViewModel
         {
             get => new(() =>
             {
-                var errors = IsValid_check.IsValidForIncreasingBalanceVM(Amount, Card);
+                var errors = IsValidCheckService.IsValidForIncreasingBalanceVM(Amount, Card);
                 Error = errors!.Item1!;
                 if (errors.Item2)
                 {
@@ -48,7 +48,7 @@ namespace CargoCompanyWPF.ViewModel
             {
 
 
-                var errors = IsValid_check.IsValidForIncreasingBalanceVM(Amount, Card);
+                var errors = IsValidCheckService.IsValidForIncreasingBalanceVM(Amount, Card);
 
                 Error = errors!.Item1!;
 

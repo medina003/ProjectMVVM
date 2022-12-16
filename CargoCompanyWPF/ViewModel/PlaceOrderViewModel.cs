@@ -32,7 +32,7 @@ namespace CargoCompanyWPF.ViewModel
         {
             get => new(() =>
             {
-            var errors = IsValid_check.IsValidForPlaceOrderVM(Order);
+            var errors = IsValidCheckService.IsValidForPlaceOrderVM(Order);
 
             Error = errors!.Item1!;
 

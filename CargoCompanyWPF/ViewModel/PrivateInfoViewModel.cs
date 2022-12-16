@@ -34,7 +34,7 @@ namespace CargoCompanyWPF.ViewModel
         {
             get => new(() =>
             {
-                var errors = IsValid_check.IsValidForChangesVM(User);
+                var errors = IsValidCheckService.IsValidForChangesVM(User);
                 Error = errors.Item1;
                 if (errors.Item2)
                 {

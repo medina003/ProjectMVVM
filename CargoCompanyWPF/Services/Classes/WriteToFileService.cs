@@ -18,6 +18,7 @@ namespace CargoCompanyWPF.Services.Classes
                 LastName = user?.LastName,
                 Email = user?.Email,
                 Password = user?.Password,
+                PasswordConfirmation = user?.PasswordConfirmation,
                 Address = user?.Address,
                 Phone = user?.Phone,
                 Serial = user?.Serial,
@@ -28,11 +29,7 @@ namespace CargoCompanyWPF.Services.Classes
             using var fs = new FileStream("UsersInfo.json", FileMode.OpenOrCreate);
             JsonSerializer.Serialize(fs,Users.All_users);
             return Users.All_users.Count - 1;   
-            //_navigationService?.NavigateTo<LoginViewModel>(new ParameterMessage() { Message = newUser });
 
-            //Users users = new Users();  
-            //using var fs = new FileStream("data.json", FileMode.OpenOrCreate);
-            //JsonSerializer.Serialize(fs,users);
         }
 
     }

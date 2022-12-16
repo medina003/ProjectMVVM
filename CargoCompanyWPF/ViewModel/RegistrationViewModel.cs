@@ -27,7 +27,7 @@ namespace CargoCompanyWPF.ViewModel
 
             get => new(param =>
             {
-                var errors = IsValid_check.IsValidForRegistrationVM(User);
+                var errors = IsValidCheckService.IsValidForRegistrationVM(User);
 
                 Error = errors.Item1;
 

@@ -36,7 +36,7 @@ namespace CargoCompanyWPF.ViewModel
                 if (CheckJsonService.Check("UsersInfo.json"))
                 {
                     Users.All_users = DeserializeService.Deserialize<List<User?>>();
-                    var errors = IsValid_check.IsValidForLoginVM(User);
+                    var errors = IsValidCheckService.IsValidForLoginVM(User);
                     Error = errors.Item1;
                     if (errors.Item2)
                     {
