@@ -3,11 +3,6 @@ using CargoCompanyWPF.Services.Classes;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
 
 namespace CargoCompanyWPF.Model
 {
@@ -17,63 +12,68 @@ namespace CargoCompanyWPF.Model
     }
     public class User : ISendable
     {
-        public string? UserID { get; set; }
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
-        public string? Email { get; set; }
-        public string? Password { get; set; }
-        [JsonIgnore]
-        public string? PasswordConfirmation { get; set; }
-        public string? Address { get; set; }
-        public string? Phone { get; set; }
-        public string? Serial { get; set; }
-        public string? FIN { get; set; }
-        public BitmapImage? Img { get; set; }
+        public string? UserID { get; set; } = String.Empty;
+        public string? FirstName { get; set; } = String.Empty;
+        public string? LastName { get; set; } = String.Empty;
+        public string? Email { get; set; } = String.Empty;
+        public string? Password { get; set; } = String.Empty;
+        public string? PasswordConfirmation { get; set; } = String.Empty;
+        public string? Address { get; set; } = String.Empty;
+        public string? Phone { get; set; } = String.Empty;
+        public string? Serial { get; set; } = String.Empty;
+        public string? FIN { get; set; } = String.Empty;
         public ObservableCollection<Order?>? Orders { get; set; } = new();
         public Balance? Balance_on_acc { get; set; } = new();
         public List<Order_operation?>? Operation { get; set; }
-        public Statuses? Statuses { get; set; } = new();
         public double? Last30Days
         {
             get
             {
                 return Last30DaysService.CountBalance(this?.Orders!);
             }
+            set
+            {
+            }
         }
-
+        public User Copy()
+        {
+            User temp = new();
+            temp.FirstName = this.FirstName;
+            temp.LastName = this.LastName;
+            temp.Email = this.Email;
+            temp.Password = this.Password;
+            temp.PasswordConfirmation = this.PasswordConfirmation;
+            temp.Address = this.Address;
+            temp.Phone = this.Phone;
+            temp.Serial = this.Serial;
+            temp.FIN = this.FIN;
+            temp.Orders = new(this?.Orders!);
+            temp.Balance_on_acc = this?.Balance_on_acc!;
+            temp.Operation = this?.Operation;
+            temp.Last30Days = this.Last30Days;
+            return temp;
+        }
 
 
     }
 
     public class Order
     {
-        //public override string ToString()
-        // {
-        //     return "Person: " + Link + " " + Amount;
-        // }
         public string? OrderFin { get; set; }
         public string? Tracking_number { get; set; }
-        public string? Amount { get; set; }
-        public string? Link { get; set; }
+        public string? Amount { get; set; } = String.Empty;
+        public string? Link { get; set; } = String.Empty;
         public string? Size { get; set; }
         public string? Color { get; set; }
-        public string? Quantity { get; set; }
+        public string? Quantity { get; set; } = String.Empty;
         public string? Notes { get; set; }
-        public string? Shop_delivery_price { get; set; }
-        public BitmapImage? Invoice_image { get; set; }
-        public bool Contains_liquid { get; set; }
+        public double TotalPrice { get; set; } = 0;
+        public Uri? Uri { get; set; }
         public string? Category { get; set; }
         public bool Declared_on_website { set; get; } = false;
         public bool Ordered { set; get; } = false;
-        //public bool In_Foreign_Warehouse { get; set; } = false;
-        //public bool On_the_way { get; set; } = false;
-        //public bool Received { get; set; } = false;
-        //public bool Handed_over { get; set; } = false;
-        public bool Purchase_requests { get; set; } = false;
         public DateTime dateTime { get; set; } = new();
         public string? Status { get; set; } = "All";
-        //public Balance? Balance_on_acc { get; set; }
-        //public List<Order_operation?>? Operation { get; set; }
 
     }
 
@@ -90,30 +90,7 @@ namespace CargoCompanyWPF.Model
     {
 
         public double? Price { get; set; }
-        public DateTime DateTime { get; set; } = new(); }
+        public DateTime DateTime { get; set; } = new();
+    }
 
-        //    public static void CountBalance()
-        //    {
-        //        foreach (Order order in Users.All_users[(int)Index].Orders)
-        //        {
-        //            if (order.Ordered)
-        //            {
-        //                if ((order.dateTime - DateTime.Now).TotalDays > 31)
-        //                {
-
-        //                }
-
-        //            }
-
-        //        }
-        //    }
-        //}
-
-        public class Statuses
-        {
-            public ObservableCollection<string?>? OrderStatuses { get; set; } = new() { "All", "Paid", "Ordered" };
-            public ObservableCollection<string?>? PackageStatuses { get; set; } = new() { "All", "Ordered", "In abroad warehouse", "Shipped", "In filial", "Handed over" };
-
-        }
-    
 }

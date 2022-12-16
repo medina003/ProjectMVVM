@@ -17,28 +17,27 @@
             FontFamily="{DynamicResource MaterialDesignFont}"
             Height="700" Width="800">
     <Grid>
-        <TextBlock Text="Edit your profile" IsEnabled="False" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"  FontSize="40" Margin="40,54,0,0"/>
-        <TextBlock Height="23" HorizontalAlignment="Right" Margin="0,120,291,0" Text="Phone:" VerticalAlignment="Top" Width="64" />
+        <TextBlock Text="Edit your profile" IsEnabled="False" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"  FontSize="30" Margin="21,54,0,0"/>
+        <TextBlock Height="23" HorizontalAlignment="Right" Margin="0,120,310,0" Text="Phone:" VerticalAlignment="Top" Width="45" />
         <TextBlock Height="23" HorizontalAlignment="Right" Margin="0,168,281,0" Text="Seria:" VerticalAlignment="Top" Width="78" />
         <TextBlock Height="23" HorizontalAlignment="Right" Margin="0,219,294,0" Text="FIN:" VerticalAlignment="Top" Width="64" />
-        <TextBlock Height="23" HorizontalAlignment="Right" Margin="0,281,301,0" Text="Image:" VerticalAlignment="Top" Width="55" />
 
         <TextBlock Height="23" HorizontalAlignment="Left" Margin="26,117,0,0" Name="textBlockFirstname" Text="First Name:" VerticalAlignment="Top" Width="76" />
         <TextBlock Height="23" HorizontalAlignment="Left" Margin="22,167,0,0" Name="textBlockLastName" Text="Last Name:" VerticalAlignment="Top" Width="85" />
         <TextBlock Height="23" HorizontalAlignment="Left" Margin="24,212,0,0" Name="textBlockEmailId" Text="EmailId" VerticalAlignment="Top" Width="79" />
-        <TextBlock Height="23" HorizontalAlignment="Left" Margin="26,252,0,0" Name="textBlockPassword" Text="Password:" VerticalAlignment="Top" Width="72"  />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="19,252,0,0" Name="textBlockPassword" Text="Password:" VerticalAlignment="Top" Width="72"  />
         <TextBlock Height="23" HorizontalAlignment="Left" Margin="17,295,0,0" Name="textBlockConfirmPwd" Text="ConfirmPassword:" VerticalAlignment="Top" Width="110" />
 
         <TextBlock Height="23" HorizontalAlignment="Left" Margin="20,342,0,0" Name="textBlockAddress" Text="Address" VerticalAlignment="Top" Width="110" />
-        <TextBox  Text="{Binding User.FirstName}" Height="23" HorizontalAlignment="Left" Margin="115,117,0,0" Name="textBoxAddress" VerticalAlignment="Top" Width="222" />
-        <TextBox Text="{Binding User.LastName}" Height="23" HorizontalAlignment="Left" Margin="119,161,0,0" Name="textBoxFirstName" VerticalAlignment="Top" Width="222" />
-        <TextBox Text="{Binding User.Email}" Height="23" HorizontalAlignment="Left" Margin="121,206,0,0" Name="textBoxLastName" VerticalAlignment="Top" Width="222" />
-        <TextBox Text="{Binding User.Password}" Height="23" HorizontalAlignment="Left" Margin="118,246,0,0" Name="textBoxEmail" VerticalAlignment="Top" Width="222" />
+        <TextBox  Text="{Binding User.FirstName}" Height="23" HorizontalAlignment="Left" Margin="139,117,0,0" Name="textBoxAddress" VerticalAlignment="Top" Width="222" />
+        <TextBox Text="{Binding User.LastName}" Height="23" HorizontalAlignment="Left" Margin="142,161,0,0" Name="textBoxFirstName" VerticalAlignment="Top" Width="222" />
+        <TextBox Text="{Binding User.Email}" Height="23" HorizontalAlignment="Left" Margin="139,206,0,0" Name="textBoxLastName" VerticalAlignment="Top" Width="222" />
+        <TextBox Text="{Binding User.Password}" Height="23" HorizontalAlignment="Left" Margin="147,247,0,0" Name="textBoxEmail" VerticalAlignment="Top" Width="222" />
         <TextBox Text="{Binding User.PasswordConfirmation}" Height="22" HorizontalAlignment="Left" Margin="144,297,0,0" Name="passwordBox1" VerticalAlignment="Top" Width="222" />
-        <TextBox Text="{Binding User.Address}" Height="23" HorizontalAlignment="Left" Margin="141,340,0,0" Name="passwordBoxConfirm" VerticalAlignment="Top" Width="222" />
+        <TextBox Text="{Binding User.Address}" Height="23" HorizontalAlignment="Left" Margin="147,341,0,0" Name="passwordBoxConfirm" VerticalAlignment="Top" Width="222" />
         <TextBox Text="{Binding User.Phone}"  Height="23" HorizontalAlignment="Right" Margin="0,115,48,0"  VerticalAlignment="Top" Width="222" />
         <TextBox Text="{Binding User.Serial}" Height="23" HorizontalAlignment="Right" Margin="0,164,49,0"  VerticalAlignment="Top" Width="222" />
-        <TextBox Text="{Binding User.FIN}" Height="23" HorizontalAlignment="Right" Margin="0,216,47,0"  VerticalAlignment="Top" Width="222" />
+        <TextBlock Text="{Binding User.FIN}" Height="23" HorizontalAlignment="Right" Margin="0,216,47,0"  VerticalAlignment="Top" Width="222" />
         <Button Command="{Binding SaveCommand}"  Content="Save" Height="54" HorizontalAlignment="Left" Margin="319,0,0,104" Name="Submit" VerticalAlignment="Bottom" Width="158"  />
 
         <TextBlock Text="{Binding Error.Empty_error}" FontSize="10" Margin="252,612,230,19" IsEnabled="True"/>
@@ -51,8 +50,6 @@
         <TextBlock Text="{Binding Error.FirstName_error}" FontSize="10" Margin="108,149,374,538" IsEnabled="True"/>
         <TextBlock Text="{Binding Error.LastName_error}" FontSize="10" Margin="114,195,368,494" IsEnabled="True"/>
         <TextBlock Text="{Binding Error.Address_error}" FontSize="10" Margin="123,373,359,314" IsEnabled="True"/>
-
-        <Button Content="Browse..." Height="53" HorizontalAlignment="Right" Margin="0,0,76,327" VerticalAlignment="Bottom" Width="158" Background="#FF673AB7"  />
         <Button Command="{Binding BackCommand}" Height="50" Margin="0,2,724,648"  BorderBrush="Transparent"  BorderThickness="100" RenderTransformOrigin="0.297,0.519">
             <materialDesign:PackIcon
                     Width="57"
@@ -60,6 +57,7 @@
                     Foreground="Black"
                     Kind="ArrowBackCircle" VerticalAlignment="Center" RenderTransformOrigin="0.144,0.532" HorizontalAlignment="Center"/>
         </Button>
+        <TextBlock Height="23" HorizontalAlignment="Right" Margin="0,119,267,0" Text="+994" VerticalAlignment="Top" Width="38" />
 
     </Grid>
 </UserControl>

@@ -20,43 +20,47 @@
              Height="700" Width="800">
     <Grid>
 
-        <TextBlock Text="Registration" IsEnabled="False" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"  FontSize="40" Margin="297,28,0,0"/>
-        <TextBlock Height="23" HorizontalAlignment="Right" Margin="0,120,245,0" Text="Phone:" VerticalAlignment="Top" Width="110" />
-        <TextBlock Height="23" HorizontalAlignment="Right" Margin="0,168,249,0" Text="Seria:" VerticalAlignment="Top" Width="110" />
-        <TextBlock Height="23" HorizontalAlignment="Right" Margin="0,219,248,0" Text="FIN:" VerticalAlignment="Top" Width="110" />
-        <TextBlock Height="23" HorizontalAlignment="Right" Margin="0,281,301,0" Text="Image:" VerticalAlignment="Top" Width="55" />
+        <TextBlock Text="Registration" IsEnabled="False" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"  FontSize="40" Margin="285,29,0,0"/>
+        <TextBlock Height="23" HorizontalAlignment="Right" Margin="0,120,323,0" Text="Phone:" VerticalAlignment="Top" Width="46" />
+        <TextBlock Height="23" HorizontalAlignment="Right" Margin="0,168,277,0" Text="Seria:" VerticalAlignment="Top" Width="89" />
+        <TextBlock Height="23" HorizontalAlignment="Right" Margin="0,218,287,0" Text="FIN:" VerticalAlignment="Top" Width="74" />
 
-        <TextBlock Height="23" HorizontalAlignment="Left" Margin="26,117,0,0" Name="textBlockFirstname" Text="First Name:" VerticalAlignment="Top" Width="110" />
-        <TextBlock Height="23" HorizontalAlignment="Left" Margin="22,167,0,0" Name="textBlockLastName" Text="Last Name:" VerticalAlignment="Top" Width="110" />
-        <TextBlock Height="23" HorizontalAlignment="Left" Margin="24,212,0,0" Name="textBlockEmailId" Text="EmailId" VerticalAlignment="Top" Width="110" />
-        <TextBlock Height="23" HorizontalAlignment="Left" Margin="26,252,0,0" Name="textBlockPassword" Text="Password:" VerticalAlignment="Top" Width="110"  />
-        <TextBlock Height="23" HorizontalAlignment="Left" Margin="17,295,0,0" Name="textBlockConfirmPwd" Text="ConfirmPassword:" VerticalAlignment="Top" Width="110" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="12,117,0,0" Name="textBlockFirstname" Text="First Name:" VerticalAlignment="Top" Width="110" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="12,167,0,0" Name="textBlockLastName" Text="Last Name:" VerticalAlignment="Top" Width="110" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="12,212,0,0" Name="textBlockEmailId" Text="Email:" VerticalAlignment="Top" Width="110" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="12,252,0,0" Name="textBlockPassword" Text="Password:" VerticalAlignment="Top" Width="110"  />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="12,295,0,0" Name="textBlockConfirmPwd" Text="Confirm Password:" VerticalAlignment="Top" Width="123" />
 
-        <TextBlock Height="23" HorizontalAlignment="Left" Margin="20,342,0,0" Name="textBlockAddress" Text="Address" VerticalAlignment="Top" Width="110" />
-        <TextBox  Text="{Binding User.FirstName}" Height="23" HorizontalAlignment="Left" Margin="115,117,0,0" Name="textBoxAddress" VerticalAlignment="Top" Width="222" />
-        <TextBox Text="{Binding User.LastName}" Height="23" HorizontalAlignment="Left" Margin="119,161,0,0" Name="textBoxFirstName" VerticalAlignment="Top" Width="222" />
-        <TextBox Text="{Binding User.Email}" Height="23" HorizontalAlignment="Left" Margin="121,206,0,0" Name="textBoxLastName" VerticalAlignment="Top" Width="222" />
-        <TextBox Text="{Binding User.Password}" Height="23" HorizontalAlignment="Left" Margin="118,246,0,0" Name="textBoxEmail" VerticalAlignment="Top" Width="222" />
-        <TextBox Text="{Binding User.PasswordConfirmation}" Height="22" HorizontalAlignment="Left" Margin="144,297,0,0" Name="passwordBox1" VerticalAlignment="Top" Width="222" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="12,341,0,0" Name="textBlockAddress" Text="Address:" VerticalAlignment="Top" Width="110" />
+        <TextBox  Text="{Binding User.FirstName}" Height="23" HorizontalAlignment="Left" Margin="141,117,0,0" Name="textBoxAddress" VerticalAlignment="Top" Width="222" />
+        <TextBox Text="{Binding User.LastName}" Height="23" HorizontalAlignment="Left" Margin="140,161,0,0" Name="textBoxFirstName" VerticalAlignment="Top" Width="222" />
+        <TextBox Text="{Binding User.Email}" Height="23" HorizontalAlignment="Left" Margin="140,206,0,0" Name="textBoxLastName" VerticalAlignment="Top" Width="222" />
+        <TextBox Text="{Binding User.Password}" Height="23" HorizontalAlignment="Left" Margin="140,246,0,0" Name="textBoxEmail" VerticalAlignment="Top" Width="222" />
+        <TextBox Text="{Binding User.PasswordConfirmation}" Height="22" HorizontalAlignment="Left" Margin="139,297,0,0" Name="passwordBox1" VerticalAlignment="Top" Width="222" />
         <TextBox Text="{Binding User.Address}" Height="23" HorizontalAlignment="Left" Margin="141,340,0,0" Name="passwordBoxConfirm" VerticalAlignment="Top" Width="222" />
-        <TextBox Text="{Binding User.Phone}"  Height="23" HorizontalAlignment="Right" Margin="0,115,48,0"  VerticalAlignment="Top" Width="222" />
-        <TextBox Text="{Binding User.Serial}" Height="23" HorizontalAlignment="Right" Margin="0,164,49,0"  VerticalAlignment="Top" Width="222" />
-        <TextBox Text="{Binding User.FIN}" Height="23" HorizontalAlignment="Right" Margin="0,216,47,0"  VerticalAlignment="Top" Width="222" />
-        <Button Command="{Binding Register}"  Content="Register" Height="54" HorizontalAlignment="Left" Margin="319,0,0,104" Name="Submit" VerticalAlignment="Bottom" Width="158"  />
+        <TextBox Text="{Binding User.Phone}"  Height="23" HorizontalAlignment="Right" Margin="0,115,53,0"  VerticalAlignment="Top" Width="222" />
+        <TextBox Text="{Binding User.Serial}" Height="23" HorizontalAlignment="Right" Margin="0,164,54,0"  VerticalAlignment="Top" Width="222" />
+        <TextBox Text="{Binding User.FIN}" Height="23" HorizontalAlignment="Right" Margin="0,216,53,0"  VerticalAlignment="Top" Width="222" />
+        <Button Command="{Binding Register}"  Content="Register" Height="61" HorizontalAlignment="Left" Margin="319,0,0,112" Name="Submit" VerticalAlignment="Bottom" Width="170" FontSize="18"  />
 
-        <TextBlock Text="{Binding Error.Empty_error}" FontSize="10" Margin="247,616,235,22" IsEnabled="True"/>
-        <TextBlock Text="{Binding Error.Email_error}" FontSize="10" Margin="116,240,366,451" IsEnabled="True"/>
-        <TextBlock Text="{Binding Error.Serial_error}" FontSize="10" Margin="491,193,-9,495" IsEnabled="True"/>
+        <TextBlock Text="{Binding Error.Empty_error}" FontSize="15" Margin="322,604,197,66" IsEnabled="True"/>
+        <TextBlock Text="{Binding Error.Email_error}" FontSize="10" Margin="99,236,383,452" IsEnabled="True"/>
+        <TextBlock Text="{Binding Error.Serial_error}" FontSize="10" Margin="471,193,11,495" IsEnabled="True"/>
         <TextBlock Text="{Binding Error.Fin_error}" FontSize="10" Margin="460,251,22,434" IsEnabled="True"/>
         <TextBlock Text="{Binding Error.Phone_error}" FontSize="10" Margin="467,144,15,545" IsEnabled="True"/>
-        <TextBlock Text="{Binding Error.Password_error}" FontSize="10" Margin="110,278,372,412" IsEnabled="True"/>
+        <TextBlock Text="{Binding Error.Password_error}" FontSize="10" Margin="110,278,372,409" IsEnabled="True"/>
         <TextBlock Text="{Binding Error.PasswordConfirmation_error}" FontSize="10" Margin="110,328,372,362" IsEnabled="True"/>
         <TextBlock Text="{Binding Error.FirstName_error}" FontSize="10" Margin="119,150,363,541" IsEnabled="True"/>
-        <TextBlock Text="{Binding Error.LastName_error}" FontSize="10" Margin="121,192,361,498" IsEnabled="True"/>
-        <TextBlock Text="{Binding Error.Address_error}" FontSize="10" Margin="123,367,359,316" IsEnabled="True"/>
-
-        <Button Content="Browse..." Height="53" HorizontalAlignment="Right" Margin="0,0,61,250" VerticalAlignment="Bottom" Width="158" Background="#FF673AB7"  />
-
+        <TextBlock Text="{Binding Error.LastName_error}" FontSize="10" Margin="107,191,375,497" IsEnabled="True"/>
+        <TextBlock Text="{Binding Error.Address_error}" FontSize="10" Margin="114,372,368,316" IsEnabled="True"/>
+        <Button Command="{Binding BackCommand}" Height="50" Margin="1,16,723,634"  BorderBrush="Transparent"  BorderThickness="100" RenderTransformOrigin="0.297,0.519">
+            <mD:PackIcon
+                    Width="60"
+                    Height="40"
+                    Foreground="Black"
+                    Kind="ArrowBackCircle" RenderTransformOrigin="0.144,0.532" HorizontalAlignment="Center"/>
+        </Button>
+        <TextBlock Height="23" HorizontalAlignment="Right" Margin="0,119,276,0" Text="+994" VerticalAlignment="Top" Width="37" />
 
 
     </Grid>

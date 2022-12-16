@@ -1,98 +1,141 @@
 ﻿using CargoCompanyWPF.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mail;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace CargoCompanyWPF.Services.Classes
 {
     public static class IsValid_check
     {
-        public static Error? Error { get; set; } = new();    
+        public static Error? Error { get; set; } = new();
         public static (Error?, bool) IsValidForRegistrationVM(User? user)
         {
             Error = new();
             bool Flag = false;
-            int? counter = 0;
-
-             Error.Empty_error = "";
-             Error.Email_error = "";
-             Error.Fin_error = "";
-             Error.Serial_error = "";
-             Error.Phone_error = "";
-             Error.Password_error = "";
-             Error.PasswordConfirmation_error = "";
-             Error.FirstName_error = "";
-             Error.LastName_error = "";
-             Error.Address_error = "";
-            if ((user.FirstName == null || user?.LastName == null || user?.Email == null || user?.Password == null || user?.PasswordConfirmation == null || user?.Address == null || user?.Phone == null || user?.Serial == null || user?.FIN == null))
+            int counter = 0;
+            var errors = RegexService.RegexForUser(user);
+            Error = errors.Item1;
+            if (String.IsNullOrEmpty(user?.FirstName) || String.IsNullOrEmpty(user?.LastName) || String.IsNullOrEmpty(user?.Email) || String.IsNullOrEmpty(user?.Password) || String.IsNullOrEmpty(user?.PasswordConfirmation) || String.IsNullOrEmpty(user?.Address) || String.IsNullOrEmpty(user?.Phone) || String.IsNullOrEmpty(user?.Serial) || String.IsNullOrEmpty(user?.FIN))
             {
-                Error.Empty_error = "All fields must be filled in";
+                Error!.Empty_error = "All fields must be filled in";
                 counter++;
             }
-            if (user?.Phone != null)
-            {
-                if (!Regex.IsMatch((user?.Phone), @"^(70)|(50)|(10)|(55)|(51)|(77)|(99)[0-9](\d{7})$")) { Error.Phone_error = "Phone number must be az"; counter++; }
-            }
-            if (user?.Serial != null)
-            {
-                if (!Regex.IsMatch((user?.Serial), @"^[a-zA-Z]{2,3}(\d{7,15})$")) { Error.Serial_error = "Serial number must have 2-3 en alph in the beginning and 7-15 digits "; counter++; }
-            }
-            if (user?.FIN != null)
-            {
-                if (!Regex.IsMatch((user?.FIN), @"^[a-zA-Z0-9]{6,9}$")) { Error.Fin_error = "FIN number must have 6-9 symb of (with en alph) and digits "; counter++; }
-            }
-            if (user?.Email != null)
-            {
-                if (!Regex.IsMatch((user?.Email), @"^[^.][a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{1,63}$")) { Error.Email_error = "Invalid email"; counter++; }
 
-            }
-            if (user?.Password != null)
-            {
-                if (!Regex.IsMatch((user?.Password), @"^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$")) { Error.Password_error = "Must include at least an alphabet and one number and more than 6 characters "; counter++; }
-            }
-            if (user?.FirstName != null)
-            {
-                if (!Regex.IsMatch((user?.FirstName), @"^[~`!@#$%^&*()_+=[\]\\{}|;':"",.\/<>? a-zA-Z0-9-]*$")) { Error.FirstName_error = "Only english letters allowed"; counter++; }
-            }
-            if (user?.LastName != null)
-            {
-                if (!Regex.IsMatch((user?.LastName), @"^[~`!@#$%^&*()_+=[\]\\{}|;':"",.\/<>? a-zA-Z0-9-]*$")) { Error.LastName_error = "Only english letters allowed"; counter++; }
-            }
-            if (user?.Address != null)
-            {
-                if (!Regex.IsMatch((user?.Address), @"^[~`!@#$%^&*()_+=[\]\\{}|;':"",.\/<>? a-zA-Z0-9-]*$")) { Error.Address_error = "Only english letters allowed"; counter++; }
-            }
-            if (user?.PasswordConfirmation != user?.Password) { Error.PasswordConfirmation_error = "The password confirmation does not match"; counter++; }
+            if (user?.PasswordConfirmation != user?.Password) { Error!.PasswordConfirmation_error = "The password confirmation does not match"; counter++; }
 
-            if (Users.All_users.Exists(u => ((u.Email)?.ToLower()) == user?.Email?.ToLower())) { Error.Email_error = "Email has already been taken"; counter++; }
-            if (Users.All_users.Exists(u => ((u.FIN)?.ToLower() == user?.FIN?.ToLower()))) { Error.Fin_error = "FIN has already been taken"; counter++; }
-            if (Users.All_users.Exists(u => (u.Serial)?.ToLower() == user?.Serial?.ToLower())) { Error.Serial_error = "Serial number has already been taken"; counter++; }
-            if (Users.All_users.Exists(u => (u.Phone)?.ToLower() == user?.Phone?.ToLower())) { Error.Phone_error = "Phone number has already been taken"; counter++; }
+            if (Users.All_users.Exists(u => ((u?.Email)?.ToLower()) == user?.Email?.ToLower())) { Error!.Email_error = "Email has already been taken"; counter++; }
+
+            if (Users.All_users.Exists(u => ((u?.FIN)?.ToLower() == user?.FIN?.ToLower()))) { Error!.Fin_error = "FIN has already been taken"; counter++; }
+
+            if (Users.All_users.Exists(u => (u?.Serial)?.ToLower() == user?.Serial?.ToLower())) { Error!.Serial_error = "Serial number has already been taken"; counter++; }
+
+            if (Users.All_users.Exists(u => (u?.Phone)?.ToLower() == user?.Phone?.ToLower())) { Error!.Phone_error = "Phone number has already been taken"; counter++; }
+            counter += errors.Item2;
+
             if (counter == 0) { Flag = true; }
-
 
             return (Error, Flag);
         }
 
-        public static (Error?,bool) IsValidForLoginVM(User? user)
+        public static (Error?, bool) IsValidForLoginVM(User? user)
         {
             Error = new();
             bool Flag = false;
             int counter = 0;
-            Error.Email_error = "";
-            Error.Password_error = "";
-            if (user?.Email == "" || user?.Email == null) { Error.Email_error = "Fill in field" ;counter++; }
-            if (user?.Password == "" || user?.Password == null) { Error.Password_error = "Fill in field"; counter++; }
-            if(counter==0) { Flag = true; } 
+            if (String.IsNullOrEmpty(user?.Email)) { Error.Email_error = "Fill in field"; counter++; }
+            if (String.IsNullOrEmpty(user?.Password)) { Error.Password_error = "Fill in field"; counter++; }
+            if (counter == 0) { Flag = true; }
             return (Error, Flag);
         }
 
+        public static (Error?, bool) IsValidForChangesVM(User? user)
+        {
+            Error = new();
+            bool Flag = false;
+            int counter = 0;
+            var errors = RegexService.RegexForUser(user);
+            Error = errors.Item1;
+
+            if (String.IsNullOrEmpty(user?.FirstName) || String.IsNullOrEmpty(user?.LastName) || String.IsNullOrEmpty(user?.Email) || String.IsNullOrEmpty(user?.Password) || String.IsNullOrEmpty(user?.PasswordConfirmation) || String.IsNullOrEmpty(user?.Address) || String.IsNullOrEmpty(user?.Phone) || String.IsNullOrEmpty(user?.Serial) || String.IsNullOrEmpty(user?.FIN))
+            {
+                Error!.Empty_error = "All fields must be filled in";
+                counter++;
+            }
 
 
+            if (user?.PasswordConfirmation?.ToLower() != user?.Password?.ToLower()) { Error!.PasswordConfirmation_error = "The password confirmation does not match"; counter++; }
+            if (user?.Email?.ToLower() != Users.All_users[UserIndex.Index]?.Email?.ToLower() && !String.IsNullOrEmpty(user?.Email))
+            {
+
+                if (Users.All_users.Exists(u => ((u?.Email)?.ToLower()) == user?.Email?.ToLower())) { Error!.Email_error = "Email has already been taken"; counter++; }
+            }
+            if (user?.FIN?.ToLower() != Users.All_users[UserIndex.Index]?.FIN?.ToLower() && !String.IsNullOrEmpty(user?.FIN))
+            {
+                if (Users.All_users.Exists(u => ((u?.FIN)?.ToLower() == user?.FIN?.ToLower()))) { Error!.Fin_error = "FIN has already been taken"; counter++; }
+            }
+            if (user?.Serial?.ToLower() != Users.All_users[UserIndex.Index]?.Serial?.ToLower() && !String.IsNullOrEmpty(user?.Serial))
+            {
+                if (Users.All_users.Exists(u => (u?.Serial)?.ToLower() == user?.Serial?.ToLower())) { Error!.Serial_error = "Serial number has already been taken"; counter++; }
+            }
+            if (user?.Phone?.ToLower() != Users.All_users[UserIndex.Index]?.Phone?.ToLower() && !String.IsNullOrEmpty(user?.Phone))
+            {
+                if (Users.All_users.Exists(u => (u?.Phone)?.ToLower() == user?.Phone?.ToLower())) { Error!.Phone_error = "Phone number has already been taken"; counter++; }
+            }
+            counter += errors.Item2;
+            if (counter == 0) { Flag = true; }
+
+            return (Error, Flag);
+        }
+        public static (Error?, bool) IsValidForPlaceOrderVM(Order? Order)
+        {
+            Error = new();
+            bool Flag = false;
+            int counter = 0;
+            var errors = RegexService.RegexForOrder(Order);
+            Error = errors.Item1;
+            if (String.IsNullOrEmpty(Order?.Link) || String.IsNullOrEmpty(Order?.Size) || String.IsNullOrEmpty(Order?.Color) || String.IsNullOrEmpty(Order?.Category) || String.IsNullOrEmpty(Order?.Amount) || String.IsNullOrEmpty(Order?.Quantity) )
+            {
+                Error.Empty_error = "All fields except \"Note\" must be filled in";
+                counter++;
+            }
+            
+
+            counter += errors.Item2;
+            if (counter == 0) { Flag = true; }
+            return (Error, Flag);
+        }
+        public static (Error?, bool) IsValidForDeclareVM(Order? Order)
+        {
+            Error = new();
+            bool Flag = false;
+            int counter = 0;
+            var errors = RegexService.RegexForOrder(Order);
+            Error = errors.Item1;
+            if (String.IsNullOrEmpty(Order?.Link) || String.IsNullOrEmpty(Order?.Tracking_number) || String.IsNullOrEmpty(Order?.Category) || String.IsNullOrEmpty(Order?.Quantity) || String.IsNullOrEmpty(Order?.Amount) || Order?.Uri == null )
+            {
+                Error!.Empty_error = "All fields except \"Note\" must be filled in";
+                counter++;
+            }
+
+            counter += errors.Item2;
+            if (counter == 0) { Flag = true; }
+            return (Error, Flag);
+        }
+        public static (Error?, bool) IsValidForIncreasingBalanceVM(string? Amount,Card? Card)
+        {
+            Error = new();
+            bool Flag = false;
+            int counter = 0;
+            var errors = RegexService.RegexForBalance(Amount,Card);
+            Error = errors.Item1;
+            if (String.IsNullOrEmpty(Card?.Number) || String.IsNullOrEmpty(Card?.Name) || String.IsNullOrEmpty(Card?.Surname!) || String.IsNullOrEmpty(Card?.Month!) || String.IsNullOrEmpty(Card?.Year!) || String.IsNullOrEmpty(Card?.CVV!) || String.IsNullOrEmpty(Amount!) )
+            {
+                Error!.Empty_error = "All fields must be filled in";
+                counter++;
+            }
+
+            counter += errors.Item2;
+            if (counter == 0) { Flag = true; }
+            return (Error, Flag);
+        }
     }
 }

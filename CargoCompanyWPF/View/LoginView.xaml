@@ -19,14 +19,15 @@
               Height="700" Width="800">
 
     <Grid>
-        
-            <TextBlock Text="{Binding Error.Email_error}" FontSize="20" Margin="245,218,263,464" IsEnabled="True" />
-            <TextBlock Text="{Binding Error.Password_error}" FontSize="20" Margin="250,330,258,352" IsEnabled="True" />
-            <TextBlock Text="Login" IsEnabled="False" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"  FontSize="40" Margin="345,48,0,0"/>
-            <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding User.Email}" Margin="70,150,0,0" FontSize="35" Width="388"/>
-            <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding User.Password}" Margin="72,256,0,0" FontSize="35" Width="388"/>
-            <Button x:Name="login" Command="{Binding LoginCommand}" DockPanel.Dock="Bottom" Content="Login" Margin="279,525,313,143" FontSize="20"  />
-            <Button x:Name="notauser" Command="{Binding Not_user}"  HorizontalAlignment="Left"  Content="Not a user?" Margin="333,609,0,59"  />
-        
+        <TextBlock Height="50" FontSize="30" Width="100" Text="E-mail" Margin="32,193,668,457"></TextBlock>
+        <TextBlock Text="{Binding Error.Email_error}" FontSize="20" Margin="289,236,219,436" IsEnabled="True" />
+        <TextBlock Text="{Binding Error.Password_error}" FontSize="20" Margin="284,338,224,335" IsEnabled="True" />
+        <TextBlock Text="Login" IsEnabled="False" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"  FontSize="40" Margin="345,48,0,0" Height="59" Width="122"/>
+        <TextBox  HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding User.Email}" Margin="184,176,0,0" FontSize="35" Width="388"/>
+        <TextBox  HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding User.Password}" Margin="185,276,0,0" FontSize="35" Width="388"/>
+        <Button Height="50" Width="170" x:Name="login" Command="{Binding LoginCommand}" DockPanel.Dock="Bottom" Content="Login" Margin="279,509,313,143" FontSize="20"  />
+        <Button x:Name="notauser" Command="{Binding Not_user}" Width="118" HorizontalAlignment="Left"  Content="Not a user?" Margin="325,588,0,80" RenderTransformOrigin="0.485,0.036"  />
+        <TextBlock Height="50" FontSize="30" Text="Password" Margin="32,288,624,362"/>
+
     </Grid>
 </UserControl>

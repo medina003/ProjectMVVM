@@ -18,71 +18,45 @@ namespace CargoCompanyWPF.ViewModel
 {
     public class PlaceOrderViewModel :ViewModelBase
     {
-        public int? Index { get; set; }
-        public User User { get; set; } = new();
-        public Order Order { get; set; } = new();
+        public User? User { get; set; } = new();
+        public Order? Order { get; set; } = new();
         public Error Error { get; set; } = new();
         private INavigationService? _navigationService;
-        private readonly IMessenger _messenger;
-        public PlaceOrderViewModel(INavigationService? navigationService, IMessenger messenger)
+        public PlaceOrderViewModel(INavigationService? navigationService, IMessenger? messenger=null)
         {
             _navigationService = navigationService;
-            _messenger = messenger;
-            _messenger.Register<ParameterMessage>(this, param =>
-            {
-                Index = param?.Message;
-                if(Index!=null)User = Users.All_users[(int)Index];
-                //index = All_users
-
-            });
+           
         }
 
         public RelayCommand PayOffBalanceCommand
         {
             get => new(() =>
             {
-                //var errors = IsValid_check.IsValidForRegistrationVM(User);
-                
-                //Error = errors.Item1;
-                //if (errors.Item2)
-                //{
+            var errors = IsValid_check.IsValidForPlaceOrderVM(Order);
 
+            Error = errors!.Item1!;
 
-                   if ((Convert.ToDouble(Users.All_users[(int)Index].Balance_on_acc.Balance_for_purchase) < (Convert.ToDouble(Order.Amount) * Convert.ToDouble(Order.Quantity))))
+                if (errors.Item2)
+                {
+                    if (PaymentService.IsPayable(Order, User))
                     {
-                        MessageBox.Show("You don't have enough money on the balance");
-                    }
-                   else
-                    {
-                        if (MessageBox.Show("Close Application?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
-                        {
-                            //
-                        }
-                        else
-                        {
-                            Users.All_users[(int)Index].Balance_on_acc.Balance_for_purchase -= Convert.ToDouble(Order.Amount );
-                            Order.Ordered = true;
-                        Order.Status = "Paid";
-                        Order.OrderFin = Users.All_users[(int)Index].FIN;
-                            Users.All_users[(int)Index].Orders.Add(Order);
-                            Order.dateTime = DateTime.Now;
-                            using var fs = new FileStream("UsersInfo.json", FileMode.Truncate);
-                            JsonSerializer.Serialize(fs, Users.All_users);
-                            
-                            _navigationService?.NavigateTo<UserdashboardViewModel>(new ParameterMessage() { Message = Index });
-
+                        SerializeService.Serialize("UsersInfo.json", Users.All_users!);
+                        _navigationService?.NavigateTo<UserdashboardViewModel>(new ParameterMessage() { Message = User });
                         Order = new();
-
                     }
-
-                    }
-
-                //}
-
+                }
+            });
+        }
+        public RelayCommand BackCommand
+        {
+            get => new(() =>
+            {
+                Order = new();
+                Error = new();
+                _navigationService?.NavigateTo<UserdashboardViewModel>();
 
             });
         }
-
 
 
 

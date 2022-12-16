@@ -23,17 +23,14 @@
         </Style>
     </UserControl.Resources>
     <Grid Margin="1,0,-1,0">
-        <!--<Grid.ColumnDefinitions>
-            <ColumnDefinition Width="153*"/>
-            <ColumnDefinition Width="47*"/>
-        </Grid.ColumnDefinitions>-->
+
         <Grid.RowDefinitions>
             <RowDefinition Height="70"></RowDefinition>
             <RowDefinition Height="150"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="137*"></RowDefinition>
+            <RowDefinition Height="103*"/>
 
         </Grid.RowDefinitions>
-        <!--The header of the application that remains unchanged while navigating-->
         <Grid Grid.Row="0" Background="
 #320b86" >
 
@@ -42,25 +39,17 @@
                 <ColumnDefinition Width="143*"/>
             </Grid.ColumnDefinitions>
             <materialDesign:PackIcon Kind="Account"  Width="30" Height="30" Margin="3,15,0,0"/>
-            <TextBlock Text="{Binding Name}" Margin="0,0,42,0"></TextBlock>
             <Button Command ="{Binding PrivateInfoCommand}" x:Name="UserSettings" Grid.Row="0" Content="Private info" Margin="52,16,633,22" Grid.ColumnSpan="2"  />
             <Button Command="{Binding PlaceOrderCommand}" x:Name="PlaceOrder" Grid.Row="0" Content="Place Order" Margin="355,18,245,20" Grid.Column="1" />
             <Button Command="{Binding DeclareCommand}" x:Name="Declare" Grid.Row="0" Content="Declare" Margin="519,18,81,20" Grid.Column="1" />
-            <!--<Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="4*"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="0.75*"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-            </Grid.ColumnDefinitions>-->
+ 
             <StackPanel Margin="20 10 0 0"  Grid.Row="0" Grid.Column="0" Orientation="Vertical" Grid.ColumnSpan="2">
 
 
             </StackPanel>
 
 
-            <Button Command="{Binding LogOutCommand}" Grid.Column="1"  Width="50" Height="50" Margin="671,10,30,10"  BorderBrush="
+            <Button Command="{Binding LogOutCommand}" Grid.Column="1"  Width="50" Height="50" Margin="680,9,21,11"  BorderBrush="
 Transparent"  BorderThickness="100">
                 <materialDesign:PackIcon
                     Width="20"
@@ -82,24 +71,34 @@ white"
 
         </Grid>
         <Grid Grid.Row="1" >
-
-            <Grid Grid.Column="0" Background="Orange" Margin="32,49,650,0" Height="61" VerticalAlignment="Top" >
-                <TextBlock Background="Orange" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"  Text="{Binding Balance.Balance_for_purchase}" TextWrapping="Wrap" TextAlignment="Center"/>
+            <Grid Grid.Row="1">
+                <TextBlock Height="30" Width="150" Margin="27,14,663,106">Balance for purchase</TextBlock>
             </Grid>
-            <Grid Background="Orange" Margin="237,50,446,0" Height="62" VerticalAlignment="Top">
-                <TextBlock Background="Orange" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="{Binding Balance.Balance_for_delivery}" TextWrapping="Wrap" TextAlignment="Center"/>
+            <Grid Grid.Column="0" Background="Orange" Margin="32,49,678,0" Height="61" VerticalAlignment="Top" >
+                <TextBlock Background="Orange" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"  Text="{Binding User.Balance_on_acc.Balance_for_purchase}" TextWrapping="Wrap" TextAlignment="Center"/>
             </Grid>
-            <Grid Background="Orange" Margin="444,49,239,0" Height="62" VerticalAlignment="Top">
+            <Grid Grid.Row="1">
+                <TextBlock Height="30" Margin="240,14,472,106">Balance for orders</TextBlock>
+            </Grid>
+            <Grid Background="Orange" Margin="237,50,473,0" Height="62" VerticalAlignment="Top">
+                <TextBlock Background="Orange" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="{Binding User.Balance_on_acc.Balance_for_delivery}" TextWrapping="Wrap" TextAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <TextBlock Height="30" Margin="471,13,277,107" RenderTransformOrigin="0.563,0.464">Last 30 days</TextBlock>
+                <TextBlock Margin="172,80,634,51" Text="TL" FontSize="20"/>
+                <TextBlock Margin="388,80,418,51" Text="TL" FontSize="20"/>
+                <TextBlock Margin="598,80,208,51" Text="TL" FontSize="20"/>
+            </Grid>
+            <Grid Background="Orange" Margin="444,49,266,0" Height="62" VerticalAlignment="Top">
                 <TextBlock Background="Orange" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="{Binding User.Last30Days}"/>
             </Grid>
 
-            <Button Command ="{Binding IncreasingBalanceCommand}" Content="Increase the balance" Margin="652,64,16,54"/>
+            <Button Command ="{Binding IncreasingBalanceCommand}" Content="Increase the balance" Margin="646,59,22,59"/>
 
         </Grid>
-        <!--The tab controls that will hold the content of the different pages -->
         <TabControl Grid.Row="2" VerticalContentAlignment="Top"
                         Style="{StaticResource MaterialDesignNavigatilRailTabControl}"
-                        materialDesign:ColorZoneAssist.Mode="Standard" Margin="0,0,1,0"  >
+                        materialDesign:ColorZoneAssist.Mode="Standard" Margin="0,0,1,0" Grid.RowSpan="2"  >
             <TabItem   Width="140" Height="165" x:Name="AddPlayerTab">
                 <TabItem.Header>
                     <StackPanel  Background=" 
@@ -110,17 +109,17 @@ WhiteSmoke"  Height="165" Width="140" HorizontalAlignment="Stretch" VerticalAlig
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid>
-                        <ComboBox SelectedValue="{Binding SelectedValue}"  Margin="458,17,31,0" VerticalAlignment="Top" ItemsSource="{Binding Strings}" >
+                        <ComboBox SelectedValue="{Binding SelectedValue}"  Margin="458,17,31,0" VerticalAlignment="Top" ItemsSource="{Binding Statuses.OrderStatuses}" >
 
                         </ComboBox>
                         <ScrollViewer Margin="0,76,30,20"  VerticalScrollBarVisibility="Auto">
 
                             <StackPanel>
-                                <ListView  ItemsSource="{Binding PostsView}" >
+                                <ListView  ItemsSource="{Binding ItemsView.Orders}" >
                                     <ListView.View>
                                         <GridView>
                                             <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}"  Header="Link"  Width="225" DisplayMemberBinding="{Binding Link}"  />
-                                            <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Header="Amount" Width="225" DisplayMemberBinding="{Binding Amount}" />
+                                            <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Header="Total price" Width="225" DisplayMemberBinding="{Binding TotalPrice}" />
                                             <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Header="Date" Width="225" DisplayMemberBinding="{Binding dateTime}" />
 
                                         </GridView>
@@ -142,18 +141,25 @@ WhiteSmoke"  Height="165" Width="140">
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid>
-                        <ComboBox SelectedValue="{Binding SelectedValue2}"  Margin="458,17,31,0" VerticalAlignment="Top" ItemsSource="{Binding Strings2}" >
+                        <ComboBox SelectedValue="{Binding SelectedValue2}"  Margin="458,17,31,0" VerticalAlignment="Top" ItemsSource="{Binding Statuses.PackageStatuses}" >
 
                         </ComboBox>
                         <ScrollViewer Margin="0,76,30,20"  VerticalScrollBarVisibility="Auto">
 
                             <StackPanel>
-                                <ListView  ItemsSource="{Binding PostsView2}" >
+                                <ListView  ItemsSource="{Binding ItemsView.Packages}" >
                                     <ListView.View>
                                         <GridView>
-                                            <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}"  Header="Link"  Width="225" DisplayMemberBinding="{Binding Link}"  />
-                                            <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Header="Amount" Width="225" DisplayMemberBinding="{Binding Amount}" />
-                                            <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Header="Date" Width="225" DisplayMemberBinding="{Binding dateTime}" />
+                                            <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}"  Header="Link"  Width="160" DisplayMemberBinding="{Binding Link}"  />
+                                            <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Header="Toatl price" Width="160" DisplayMemberBinding="{Binding TotalPrice}" />
+                                            <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Header="Date" Width="160" DisplayMemberBinding="{Binding dateTime}" />
+                                            <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Header="Invoice image" Width="180" >
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Image Height="180" Width="180" Source="{Binding Uri}" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
 
                                         </GridView>
                                     </ListView.View>
@@ -180,7 +186,7 @@ WhiteSmoke" Height="165" Width="140">
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
-                            <RowDefinition/>
+                            <RowDefinition Height="120"/>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>

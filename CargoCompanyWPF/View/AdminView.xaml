@@ -22,34 +22,34 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition Height="0.35*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Command ="{Binding LogOutCommand}" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" BorderBrush="Red" BorderThickness="1"  Background="white"  Margin="37,9,0,0" >
+            <Button Command ="{Binding LogOutCommand}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" BorderBrush="Red" BorderThickness="1"  Background="white"  Margin="35,0,0,0" >
                 <materialDesign:PackIcon
                     Width="30"
                     Height="25"
                     Foreground="OrangeRed"
                     Kind="Logout" />
             </Button>
-            <TextBox Text="{Binding Search}" Grid.Column="0" Margin="92,-8,302,10"/>
-            <Button
+            <TextBox Text="{Binding Search}" Grid.Column="0" Margin="92,9,302,10"/>
+            <Button Height="35" Width="35"
                          Command="{Binding SearchCommand}"
                          Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Margin="426,5,234,9">
-                <materialDesign:PackIcon Kind="Search"/>
+                <materialDesign:PackIcon Height="20" Kind="Search"/>
             </Button>
         </Grid>
-        <Grid Grid.Row="1" Margin="0,0,85,0">
+        <Grid Grid.Row="1" >
 
 
-            <ScrollViewer Margin="84,0,-30,0">
-                <ListBox  
+            <ScrollViewer Grid.Row="1" >
+                <ListBox  Grid.Row="1"
                     ItemsSource="{Binding OrdersList}"
-                    SelectedItem="{Binding SelectedOrder}" SelectedIndex="{Binding SelectedIndex}" SelectionMode="Multiple"  >
+                    SelectedItem="{Binding SelectedOrder}" SelectedIndex="{Binding SelectedIndex}" SelectionMode="Multiple" Height="448"  >
 
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -62,22 +62,24 @@
                                 <DockPanel>
 
                                     <StackPanel  Grid.Column="0" DockPanel.Dock="Left">
+                                        <Label Content="Fin: "/>
                                         <Label Content="Site name: "/>
-                                        <!--<Label Content="Invoice price: "/>
+                                        <Label Content="Invoice price: "/>
                                         <Label Content="Product category: "/>
                                         <Label Content="Quantity: "/>
                                         <Label Content="Size: "/>
-                                        <Label Content="Color: "/>-->
+                                        <Label Content="Color: "/>
                                         <Label Content="Status: "/>
 
                                     </StackPanel>
                                     <StackPanel Grid.Column="1" DockPanel.Dock="Top">
+                                        <Label Content="{Binding OrderFin}"/>
                                         <Label Content="{Binding Link}"/>
-                                        <!--<Label Content="{Binding Amount}"/>
+                                        <Label Content="{Binding Amount}"/>
                                         <Label Content="{Binding Category}"/>
                                         <Label Content="{Binding Quantity}"/>
                                         <Label Content="{Binding Size}"/>
-                                        <Label Content="{Binding Color}"/>-->
+                                        <Label Content="{Binding Color}"/>
                                         <Label Content="{Binding Status}"/>
 
                                     </StackPanel>
@@ -97,6 +99,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
+
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -106,17 +110,15 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="3" Content="View all" Command="{Binding ViewAllCommand}" Grid.ColumnSpan="2" Margin="67,-584,73,606" RenderTransformOrigin="0.407,0.49"></Button>
-            <RadioButton  Grid.Row="1" HorizontalAlignment="Center" Command="{Binding RadioButtonCommand}" IsChecked="{Binding InAbroad}" Content="In abroad warehouse" />
-            <RadioButton Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Center"  Command="{Binding RadioButtonCommand}" IsChecked="{Binding Shipped}" Content="Shipped"/>
-            <RadioButton Grid.Row="1" Grid.Column="2"  HorizontalAlignment="Center"  Command="{Binding RadioButtonCommand}" IsChecked="{Binding InFillial}" Content="In fillial"/>
-            <RadioButton Grid.Row="1" Grid.Column="3"  HorizontalAlignment="Center"  Command="{Binding RadioButtonCommand}" IsChecked="{Binding Ordered}" Content="Ordered"/>
-            <RadioButton Grid.Row="1" Grid.Column="4" HorizontalAlignment="Center" Command="{Binding RadioButtonCommand}" Content="Paid" IsChecked="{Binding Paid}"></RadioButton>
-            <RadioButton Grid.Row="1" Grid.Column="5" HorizontalAlignment="Center" Command="{Binding RadioButtonCommand}" Content="Handed over"  IsChecked="{Binding HandedOver}" ></RadioButton>
-            <CheckBox Grid.Row="0" Grid.Column="5" Content="Select all " HorizontalAlignment="Right" IsChecked="{Binding IsAllSelected}" Margin="0,-1,44,2" ></CheckBox>
+            <Button Grid.Column="3" Content="View all" Command="{Binding ViewAllCommand}" Grid.ColumnSpan="2" Margin="104,-523,36,547" RenderTransformOrigin="0.407,0.49"></Button>
+            <RadioButton  Grid.Row="1" HorizontalAlignment="Left" Command="{Binding RadioButtonCommand}" IsChecked="{Binding RadioButtonStatuses.InAbroad}" Content="In abroad warehouse" Grid.ColumnSpan="2" Margin="14,0,0,0" />
+            <RadioButton Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Left"  Command="{Binding RadioButtonCommand}" IsChecked="{Binding RadioButtonStatuses.Shipped}" Content="Shipped" Margin="52,0,0,0"/>
+            <RadioButton Grid.Row="1" Grid.Column="2"  HorizontalAlignment="Center"  Command="{Binding RadioButtonCommand}" IsChecked="{Binding RadioButtonStatuses.InFillial}" Content="In fillial"/>
+            <RadioButton Grid.Row="1" Grid.Column="3"  HorizontalAlignment="Center"  Command="{Binding RadioButtonCommand}" IsChecked="{Binding RadioButtonStatuses.Ordered}" Content="Ordered"/>
+            <RadioButton Grid.Row="1" Grid.Column="4" HorizontalAlignment="Center" Command="{Binding RadioButtonCommand}" Content="Paid" IsChecked="{Binding RadioButtonStatuses.Paid}"></RadioButton>
+            <RadioButton Grid.Column="5" HorizontalAlignment="Left" Command="{Binding RadioButtonCommand}" Content="Handed over"  IsChecked="{Binding RadioButtonStatuses.HandedOver}" Margin="12,56,0,56" Grid.RowSpan="3" />
+            <CheckBox Grid.Row="0" Grid.Column="5" Content="Select all " HorizontalAlignment="Right" IsChecked="{Binding IsAllSelected}" Margin="0,11,43,47" Grid.RowSpan="2" ></CheckBox>
         </Grid>
-
-
 
     </Grid>
 </UserControl>

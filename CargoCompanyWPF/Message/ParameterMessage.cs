@@ -8,7 +8,7 @@ namespace CargoCompanyWPF.Message
 {
     public class ParameterMessage
     {
-        public int? Message { get; set; }
+        public ISendable? Message { get; set; }
     }
 
 }
